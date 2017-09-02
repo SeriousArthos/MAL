@@ -1,0 +1,2 @@
+# MAL
+MyAnimeList styles
