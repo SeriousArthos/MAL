@@ -166,6 +166,64 @@
 .animetitle {
 }
 
+/*
+.table_header:nth-of-type(1) {
+	text-indent: -9999px;
+	line-height: 0; 
+}
+.table_header:nth-of-type(1)::after {
+  content: "#";
+  text-indent: 0;
+  display: block;
+  line-height: initial; 
+}
+*/
+.table_header:nth-of-type(2) {
+	width: var(--title-width);
+}
+	/*
+	text-indent: -9999px;
+	line-height: 0; 
+}
+/*
+.table_header:nth-of-type(2)::after {
+  content: "Title";
+  text-indent: 0;
+  display: block;
+  line-height: initial; 
+}
+.table_header:nth-of-type(3) {
+	text-indent: -9999px;
+	line-height: 0; 
+}
+.table_header:nth-of-type(3)::after {
+  content: "Score";
+  text-indent: 0;
+  display: block;
+  line-height: initial; 
+}
+.table_header:nth-of-type(4) {
+	text-indent: -9999px;
+	line-height: 0; 
+}
+.table_header:nth-of-type(4)::after {
+  content: "Type";
+  text-indent: 0;
+  display: block;
+  line-height: initial; 
+}
+.table_header:nth-of-type(5) {
+	text-indent: -9999px;
+	line-height: 0; 
+}
+.table_header:nth-of-type(5)::after {
+  content: "Progress";
+  text-indent: 0;
+  display: block;
+  line-height: initial; 
+}
+*/
+
 /* Custom "tag" column width and title */
 .table_header:nth-of-type(6) {
 	width: var(--tag-width);
@@ -178,6 +236,29 @@
   display: block;
   line-height: initial; /* New content takes up original line height */
 }
+
+/*
+.table_header:nth-of-type(7) {
+	text-indent: -9999px;
+	line-height: 0; 
+}
+.table_header:nth-of-type(7)::after {
+  content: "Started";
+  text-indent: 0;
+  display: block;
+  line-height: initial; 
+}
+.table_header:nth-of-type(8) {
+	text-indent: -9999px;
+	line-height: 0; 
+}
+.table_header:nth-of-type(8)::after {
+  content: "Finished";
+  text-indent: 0;
+  display: block;
+  line-height: initial; 
+}
+*/
 
 /*
 Tags Row Width
