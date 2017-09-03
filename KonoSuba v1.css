@@ -1,0 +1,440 @@
+/*
+    CSS by SeriousArthos ( http://myanimelist.net/profile/SeriousArthos ), loosely based on Cosmicblaze454's CSS ( http://myanimelist.net/animelist/Cosmicblaze454 ) and using Shishio-kun's guide on top bar customization ( http://myanimelist.net/forum/?topicid=397331 ). Feel free to use and edit!
+*/
+
+/* Google Web Fonts */
+@import url(https://fonts.googleapis.com/css?family=Berkshire+Swash);
+@import url(https://fonts.googleapis.com/css?family=Merienda:700);
+
+/* links */
+[href] {
+    color: #F9E0C7; /* black text */
+    text-decoration: none; /* remove all text decorations (underscore, bold, etc) */
+}
+
+/* main container */
+#list_surround {
+    position: relative;
+    overflow: hidden;
+    
+    /* standard text style */
+    color: #F9E0C7;
+    font-family: 'Merienda', cursive;
+    font-size: 16px;
+}
+
+/* main pseudo container, used for animating the background */
+#list_surround:before {
+    /* keep these values */
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    
+    background-color: #C9454C; 
+	/* Current background image from http://fikrimochizou.deviantart.com/art/Megumin-KonoSuba-586842418 */
+    background-image: url('http://i.imgur.com/c3pTGSo.png'); /* put your background image here */
+	background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* hide navigation (menu for Watching, Completed, etc) */
+[class^=status_] {
+    display: none;
+}
+
+/* hide stats */
+#grand_totals,
+.category_totals {
+    display: none;
+}
+
+/* position list */
+#list_surround [cellpadding="0"] {
+    /* skewing list */
+    -ms-transform: skewY(5deg); /* IE 9 */
+    -webkit-transform: skewY(5deg); /* Safari */
+    transform: skewY(5deg);
+    
+    width: 60%; /* list width */
+    left: 20%; /* horizontal position */
+    position: relative;
+}
+
+/* categories (Watching, Completed, etc) */
+[class^=header_] {
+	margin-right: 100%;
+	margin-top: 0px;
+	white-space: nowrap;
+}
+
+/* categories (Watching, Completed, etc) text */
+.header_title {
+    padding: 0 0 0;
+    
+    /* text style */
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 84px;
+    color: #FCC860 !important;
+	text-shadow: 1px 1px 4px #C9454C;
+}
+
+/* columns header (Title, Score, etc) */
+.table_header {
+    padding: 0px 8px 4px 8px;
+    /* text style */
+    color: #FCC860 !important;
+	text-shadow: 1px 1px 4px #C9454C;
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 20px;
+}
+
+/* the next two styles are used for rounding the columns header corners */
+.table_header:first-child {  
+  border-radius: 5px 0px 0px 5px;
+  -moz-border-radius: 5px 0px 0px 5px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+}
+
+.table_header:last-child {  
+  border-radius: 0px 5px 5px 0px;
+  -moz-border-radius: 0px 5px 5px 0px;
+  -webkit-border-radius: 0px 5px 5px 0px;
+}
+
+/* columns header (Title, Score, etc) text */
+.table_headerLink {
+    /* text style */
+    color: #FCC860 !important;
+	text-shadow: 1px 1px 4px #C9454C;
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 20px;
+}
+
+/* odd rows */
+.td1 {
+    background-color: rgba(201, 69, 76, 0.5);
+}
+
+/* even rows */
+.td2 {	
+	background-color: rgba(107, 75, 89, 0.5);
+}
+
+/* the next four styles are used for rounding the rows corners */
+.td1:first-child {  
+  border-radius: 5px 0px 0px 5px;
+  -moz-border-radius: 5px 0px 0px 5px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+}
+
+.td1:last-child {  
+  border-radius: 0px 5px 5px 0px;
+  -moz-border-radius: 0px 5px 5px 0px;
+  -webkit-border-radius: 0px 5px 5px 0px;
+}
+
+.td2:first-child {  
+  border-radius: 5px 0px 0px 5px;
+  -moz-border-radius: 5px 0px 0px 5px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+}
+
+.td2:last-child {  
+  border-radius: 0px 5px 5px 0px;
+  -moz-border-radius: 0px 5px 5px 0px;
+  -webkit-border-radius: 0px 5px 5px 0px;
+}
+
+.td1,
+.td2 {
+    padding: 8px;
+	text-shadow: 1px 1px 4px #C9454C;
+}
+
+/* odd rows and header */
+.td1,
+.animetitle {
+}
+
+/* scores */
+[id^="scor"] {
+}
+
+/* Add/Edit - More */
+[style^="float: right"] {
+}
+
+/* the following code has been kindly provided by Shishio-kun over at the MAL Forums ( http://myanimelist.net/forum/?topicid=397331 ).
+
+/*
+TOP MENU BAR FULL CUSTOMIZATION 
+I split the bar into sections, use the colors to identify what you're customizing on the layout when you edit and look at it.
+REMEMBER: the top bar looks different to the owner of the list looking at their own list, and different to users logged who aren't the owner. 
+Thirdly, it looks different to people not logged in. Some parts don't even appear to users not logged in. 
+But all the codes for customizing it for all three types are featured below!
+
+
+FIRST PART: "USERNAME, LOGOUT"
+The first section below is the top left part featuring your user name, a user sees it when they're logged in. 
+It won't appear to people not logged in. 
+*/
+
+#mal\_cs\_listinfo {
+    /* background:green !important; */ /* uncomment to enable */
+}
+
+#mal\_cs\_listinfo a {
+    /* background:pink !important; */ /* uncomment to enable */
+    /* color: blue !important; */ /* uncomment to enable */
+    
+    color: #F9E0C7 !important;
+    font-family: 'Merienda', cursive !important;
+    text-decoration: none !important;  
+}
+
+#mal\_cs\_listinfo a strong {
+    /* background: blue !important; */ /* uncomment to enable */
+    /* color: red !important; */ /* uncomment to enable */
+    
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 20px !important;
+}
+
+/*
+SECOND PART: "ADD TO LIST, HOME, ANIME LIST, MANGA LIST"
+The seond part only users logged in see. 
+It looks the same to the owner of the list and to a user who's not the owner of the list but logged in.
+It won't appear to people not logged in.
+*/
+
+#mal\_cs\_links {
+    /* background: orange !important; */ /* uncomment to enable */
+}
+
+#mal\_cs\_links div:first-of-type a:first-of-type {
+    display: none !important;
+    
+    /* background: cyan !important; */ /* uncomment to enable */
+    /* color: blue !important; */ /* uncomment to enable */
+    
+    color: #F9E0C7 !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_links div:first-of-type a:last-of-type {
+    display: none !important;
+    
+    /* background: purple !important; */ /* uncomment to enable */
+    /* color: gold !important; */ /* uncomment to enable */
+
+    color: #F9E0C7 !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+    
+}
+
+#mal\_cs\_links div:last-of-type a:first-of-type {
+    /* background: white !important; */ /* uncomment to enable */
+    /* color: green !important; */ /* uncomment to enable */
+    
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_links div:last-of-type a:last-of-type {
+    /* background: silver !important; */ /* uncomment to enable */
+    /* color: red !important; */ /* uncomment to enable */
+    
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+/*
+THIRD PART OF BAR "YOU ARE VIEWING YOUR/USERNAME'S LIST"
+Appears very different depending on if you're logged in or not and if you're the owner of the list, 
+but logged-out people see this part. But all the codes for those different views are included below. 
+There are two parts in the codes below that say my user name "Shishio-kun"-
+you need to replace that with your own exact username.  
+*/
+
+#mal\_cs\_otherlinks {
+    /* background: blue !important; */ /* uncomment to enable */
+    color: #F9E0C7 !important;
+}
+
+#mal\_cs\_otherlinks strong {
+    /* background: red !important; */ /* uncomment to enable */
+    
+    color: #F9E0C7 !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+/* I added this block to edit the style of the number of anime in common when the list is viewed by another user --SeriousArthos */
+#mal\_cs\_otherlinks div:last-of-type {
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a[href="http://myanimelist.net/history/SeriousArthos"] {
+    /* background: teal !important; */ /* uncomment to enable */
+    /* color: red !important; */ /* uncomment to enable */
+    
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a[href="http://myanimelist.net/forum/"] {
+    /* background: yellow !important; */ /* uncomment to enable */
+    /* color: orange !important; */ /* uncomment to enable */
+    
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a[href="http://myanimelist.net/panel.php?go=export"] {
+    /* background: green !important; */ /* uncomment to enable */
+    /* color: blue !important; */ /* uncomment to enable */
+
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a[href="http://myanimelist.net/profile/SeriousArthos"] {
+    /* background: yellow !important; */ /* uncomment to enable */
+    /* color: green !important; */ /* uncomment to enable */
+    
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a {
+    /* background: violet !important; */ /* uncomment to enable */
+    /* color: yellow !important; */ /* uncomment to enable */
+    
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks div:last-of-type a:first-of-type {
+    /* background: brown !important; */ /* uncomment to enable */
+    /* color: silver !important; */ /* uncomment to enable */
+    
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important; 
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks span {
+    /* background: orange !important; */ /* uncomment to enable */
+    
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a[href="http://myanimelist.net/modules.php?go=faq"] {
+    /* background: black !important; */ /* uncomment to enable */
+    /* color: white !important; */ /* uncomment to enable */
+    
+    color: #C9454C !important;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px !important; 
+    text-decoration: none !important;
+}
+
+/*
+FAR RIGHT-SIDE PANEL "POWERED BY MYANIMELIST.NET" 
+Features search, looks the same to all users logged in or not.
+*/
+
+#mal\_cs\_powered {
+    /* color: cyan !important; */ /* uncomment to enable */
+}
+
+#mal\_cs\_powered a {
+    /* color: yellow !important; */ /* uncomment to enable */
+}
+
+#mal\_cs\_powered #search {
+    /* color: brown !important; */ /* uncomment to enable */
+}
+
+#searchListButton {
+    /* color: violet !important; */ /* uncomment to enable */
+}
+
+/*MAL LOGO "MYANIMELIST"
+This is only seen by people NOT logged in. 
+Its on the left side.
+*/
+
+#mal\_control\_strip {
+    /* background: aquamarine !important; */ /* uncomment to enable */
+}
+
+td#mal\_cs\_pic a img {
+    /* background: silver !important; */ /* uncomment to enable */
+}
+
+/*Shishio-kun's code ends here */
+/* ------ */
+
+/* top bar background */
+#mal\_control\_strip {
+    background: #6B4B59 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* top bar content */
+#mal\_cs\_pic,
+#mal\_cs\_listinfo,
+#mal\_cs\_links,
+#mal\_cs\_otherlinks {
+    /* hide top bar dividers */
+    border-right: 0 none !important;
+}
+
+#mal\_cs\_powered {    
+    /* hide search */
+    display: none;
+}
+
+/* copyright - keep this enabled! */
+#copyright {
+    color: #C9454C;
+	text-shadow: 1px 1px 4px #FCC860;
+    font-family: 'Merienda', cursive !important;
+    font-size: 12px;
+	font-weight: 300;
+	padding-top: 60px;
+}

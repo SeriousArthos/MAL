@@ -1,0 +1,552 @@
+/*
+    CSS by SeriousArthos ( http://myanimelist.net/profile/SeriousArthos ), loosely based on Cosmicblaze454's CSS ( http://myanimelist.net/animelist/Cosmicblaze454 ) and using Shishio-kun's guide on top bar customization ( http://myanimelist.net/forum/?topicid=397331 ). Feel free to use and edit!
+*/
+
+/* Google Web Fonts */
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900);
+@import url(https://fonts.googleapis.com/css?family=Bitter);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:900);
+
+/* shake animation block */
+@keyframes shake {
+    0% {
+        -ms-transform: translate(10px,5px); /* IE 9 */
+        -webkit-transform: translate(10px,5px); /* Safari */
+        transform: translate(10px,5px);
+    }
+    5% {
+        -ms-transform: translate(-10px,2px); /* IE 9 */
+        -webkit-transform: translate(-10px,2px); /* Safari */
+        transform: translate(-10px,2px);
+    }
+    10% {
+        -ms-transform: translate(-10px,2px); /* IE 9 */
+        -webkit-transform: translate(-10px,2px); /* Safari */
+        transform: translate(-10px,2px);
+    }
+    15% {
+        -ms-transform: translate(5px,-5px); /* IE 9 */
+        -webkit-transform: translate(5px,-5px); /* Safari */
+        transform: translate(5px,-5px);
+    }
+    20% {
+        -ms-transform: translate(5px,-5px); /* IE 9 */
+        -webkit-transform: translate(5px,-5px); /* Safari */
+        transform: translate(5px,-5px);
+    }
+    25% {
+        -ms-transform: translate(-10px,-3px); /* IE 9 */
+        -webkit-transform: translate(-10px,-3px); /* Safari */
+        transform: translate(-10px,-3px);
+    }
+    30% {
+        -ms-transform: translate(-1px,5px); /* IE 9 */
+        -webkit-transform: translate(-1px,5px); /* Safari */
+        transform: translate(-1px,5px);
+    }
+    35% {
+        -ms-transform: translate(3px,2px); /* IE 9 */
+        -webkit-transform: translate(3px,2px); /* Safari */
+        transform: translate(3px,2px);
+    }
+    40% {
+        -ms-transform: translate(5px,1px); /* IE 9 */
+        -webkit-transform: translate(5px,1px); /* Safari */
+        transform: translate(5px,1px);
+    }
+    45% {
+        -ms-transform: translate(7px,-1px); /* IE 9 */
+        -webkit-transform: translate(7px,-1px); /* Safari */
+        transform: translate(7px,-1px);
+    }
+    50% {
+        -ms-transform: translate(-3px,-3px); /* IE 9 */
+        -webkit-transform: translate(-3px,-3px); /* Safari */
+        transform: translate(-3px,-3px);
+    }
+    55% {
+        -ms-transform: translate(-1px,-1px); /* IE 9 */
+        -webkit-transform: translate(-1px,-1px); /* Safari */
+        transform: translate(-1px,-1px);
+    }
+    /* wait for the rest of the animation window */
+}
+
+/* animate header (Watching, Completed, etc) */
+@keyframes headerAnimation {
+    from { color: #000000; } /* text from black... */
+    to { color: #E72D2E; } /* ...to red */
+}
+
+/* animate columns header (Title, Score, etc) */
+@keyframes columnHeaderAnimation {
+    from { background-color: #000000; } /* background from black... */
+    to { background-color: #FFFFFF; } /* ...to white */
+}
+
+/* animate odd rows */
+@keyframes td1Animation {
+    from { color: #000000; } /* text from black... */
+    to { color: #FFFFFF; } /* ...to white */
+}
+
+/* animate even rows */
+@keyframes td2Animation {
+    from { background-color: #000000; color: #000000; } /* background and text from black... */
+    to { background-color: #E72D2E; color: #FFFFFF; } /* ...to red and white, respectively */
+}
+
+/* links */
+[href] {
+    color: #000000; /* black text */
+    text-decoration: none; /* remove all text decorations (underscore, bold, etc) */
+    
+    /* animation call */
+    animation-name: td1Animation;
+    animation-duration: 0.01s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards; /* after animation is over, keep new style */
+}
+
+/* main container */
+#list_surround {
+    position: relative;
+    overflow: hidden; /* animated background does not spill */
+    
+    /* standard text style */
+    color: #000000;
+    font-family: 'Bitter', serif;
+    font-size: 16px;
+}
+
+/* main pseudo container, used for animating the background */
+#list_surround:before {
+    /* keep these values */
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    
+    background-color: #000000; 
+    background-image: url('http://i.imgur.com/dy5xUnS.jpg'); /* put your background image here */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    /* animation call */
+    animation-name: shake;
+    animation-delay: 1s;
+    animation-duration: 0.5s;
+    animation-iteration-count: 3; /* repeat animation */
+}
+
+/* hide navigation (menu for Watching, Completed, etc) */
+[class^=status_] {
+    display: none;
+}
+
+/* hide stats */
+#grand_totals,
+.category_totals {
+    display: none;
+}
+
+/* position list */
+#list_surround [cellpadding="0"] {
+    /* skewing list */
+    -ms-transform: skewY(-10deg); /* IE 9 */
+    -webkit-transform: skewY(-10deg); /* Safari */
+    transform: skewY(-10deg);
+    
+    width: 40%; /* list width */
+    left: 5%; /* horizontal position */
+    position: relative;
+}
+
+/* categories (Watching, Completed, etc) */
+[class^=header_] {
+	margin-right: 100%;
+	margin-top: 0px;
+	white-space: nowrap;
+}
+
+/* categories (Watching, Completed, etc) text */
+.header_title {
+    padding: 0 0 0;
+    
+    /* text style */
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 84px;
+    font-weight: 400;
+    
+    /* animation call */
+    animation-name: headerAnimation;
+    animation-duration: 0.01s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+/* columns header (Title, Score, etc) */
+.table_header {
+    padding: 0px 8px 4px 8px;
+    
+    /* animation call */
+    animation-name: columnHeaderAnimation;
+    animation-duration: 0.01s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+/* the next two styles are used for rounding the columns header corners */
+.table_header:first-child {  
+  border-radius: 5px 0px 0px 5px;
+  -moz-border-radius: 5px 0px 0px 5px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+}
+
+.table_header:last-child {  
+  border-radius: 0px 5px 5px 0px;
+  -moz-border-radius: 0px 5px 5px 0px;
+  -webkit-border-radius: 0px 5px 5px 0px;
+}
+
+/* columns header (Title, Score, etc) text */
+.table_headerLink {
+    /* text style */
+    color: #000000 !important;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+}
+
+/* odd rows */
+.td1 {
+    /* transparent background (alpha == opacity == 0) */
+    #background-color: rgba(0, 0, 0, 0);
+}
+
+/* even rows */
+.td2 {
+    /* animation call */
+    animation-name: td2Animation;
+    animation-duration: 0.01s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+/* the next two styles are used for rounding the even rows corners */
+.td2:first-child {  
+  border-radius: 5px 0px 0px 5px;
+  -moz-border-radius: 5px 0px 0px 5px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+}
+
+.td2:last-child {  
+  border-radius: 0px 5px 5px 0px;
+  -moz-border-radius: 0px 5px 5px 0px;
+  -webkit-border-radius: 0px 5px 5px 0px;
+}
+
+.td1,
+.td2 {
+    padding: 8px;
+}
+
+/* odd rows and header */
+.td1,
+.animetitle {
+    /* animation call */
+    animation-name: td1Animation;
+    animation-duration: 0.01s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+/* scores */
+[id^="scor"] {
+    /* animation call */
+    animation-name: td1Animation;
+    animation-duration: 0.01s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+/* Add/Edit - More */
+[style^="float: right"] {
+    /* animation call */
+    animation-name: td1Animation;
+    animation-duration: 0.01s;
+    animation-delay: 2s;
+}
+
+/* the following code has been kindly provided by Shishio-kun over at the MAL Forums ( http://myanimelist.net/forum/?topicid=397331 ).
+
+/*
+TOP MENU BAR FULL CUSTOMIZATION 
+I split the bar into sections, use the colors to identify what you're customizing on the layout when you edit and look at it.
+REMEMBER: the top bar looks different to the owner of the list looking at their own list, and different to users logged who aren't the owner. 
+Thirdly, it looks different to people not logged in. Some parts don't even appear to users not logged in. 
+But all the codes for customizing it for all three types are featured below!
+
+
+FIRST PART: "USERNAME, LOGOUT"
+The first section below is the top left part featuring your user name, a user sees it when they're logged in. 
+It won't appear to people not logged in. 
+*/
+
+#mal\_cs\_listinfo {
+    /* background:green !important; */ /* uncomment to enable */
+}
+
+#mal\_cs\_listinfo a {
+    /* background:pink !important; */ /* uncomment to enable */
+    /* color: blue !important; */ /* uncomment to enable */
+    
+    color: #FFFFFF !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important;  
+    text-decoration: none !important;  
+}
+
+#mal\_cs\_listinfo a strong {
+    /* background: blue !important; */ /* uncomment to enable */
+    /* color: red !important; */ /* uncomment to enable */
+    
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important;
+    font-size: 20px !important;
+}
+
+/*
+SECOND PART: "ADD TO LIST, HOME, ANIME LIST, MANGA LIST"
+The seond part only users logged in see. 
+It looks the same to the owner of the list and to a user who's not the owner of the list but logged in.
+It won't appear to people not logged in.
+*/
+
+#mal\_cs\_links {
+    /* background: orange !important; */ /* uncomment to enable */
+}
+
+#mal\_cs\_links div:first-of-type a:first-of-type {
+    display: none !important;
+    
+    /* background: cyan !important; */ /* uncomment to enable */
+    /* color: blue !important; */ /* uncomment to enable */
+    
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_links div:first-of-type a:last-of-type {
+    display: none !important;
+    
+    /* background: purple !important; */ /* uncomment to enable */
+    /* color: gold !important; */ /* uncomment to enable */
+
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+    
+}
+
+#mal\_cs\_links div:last-of-type a:first-of-type {
+    /* background: white !important; */ /* uncomment to enable */
+    /* color: green !important; */ /* uncomment to enable */
+    
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_links div:last-of-type a:last-of-type {
+    /* background: silver !important; */ /* uncomment to enable */
+    /* color: red !important; */ /* uncomment to enable */
+    
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+/*
+THIRD PART OF BAR "YOU ARE VIEWING YOUR/USERNAME'S LIST"
+Appears very different depending on if you're logged in or not and if you're the owner of the list, 
+but logged-out people see this part. But all the codes for those different views are included below. 
+There are two parts in the codes below that say my user name "Shishio-kun"-
+you need to replace that with your own exact username.  
+*/
+
+#mal\_cs\_otherlinks {
+    /* background: blue !important; */ /* uncomment to enable */
+}
+
+#mal\_cs\_otherlinks strong {
+    /* background: red !important; */ /* uncomment to enable */
+    
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+/* I added this block to edit the style of the number of anime in common when the list is viewed by another user --SeriousArthos */
+#mal\_cs\_otherlinks div:last-of-type {
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a[href="http://myanimelist.net/history/SeriousArthos"] {
+    /* background: teal !important; */ /* uncomment to enable */
+    /* color: red !important; */ /* uncomment to enable */
+    
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a[href="http://myanimelist.net/forum/"] {
+    /* background: yellow !important; */ /* uncomment to enable */
+    /* color: orange !important; */ /* uncomment to enable */
+    
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a[href="http://myanimelist.net/panel.php?go=export"] {
+    /* background: green !important; */ /* uncomment to enable */
+    /* color: blue !important; */ /* uncomment to enable */
+
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a[href="http://myanimelist.net/profile/SeriousArthos"] {
+    /* background: yellow !important; */ /* uncomment to enable */
+    /* color: green !important; */ /* uncomment to enable */
+    
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a {
+    /* background: violet !important; */ /* uncomment to enable */
+    /* color: yellow !important; */ /* uncomment to enable */
+    
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks div:last-of-type a:first-of-type {
+    /* background: brown !important; */ /* uncomment to enable */
+    /* color: silver !important; */ /* uncomment to enable */
+    
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important;
+    font-size: 12px !important; 
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks span {
+    /* background: orange !important; */ /* uncomment to enable */
+    
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important; 
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+#mal\_cs\_otherlinks a[href="http://myanimelist.net/modules.php?go=faq"] {
+    /* background: black !important; */ /* uncomment to enable */
+    /* color: white !important; */ /* uncomment to enable */
+    
+    color: #E72D2E !important;
+    font-family: 'Alegreya Sans SC', sans-serif !important;
+    font-size: 12px !important; 
+    text-decoration: none !important;
+}
+
+/*
+FAR RIGHT-SIDE PANEL "POWERED BY MYANIMELIST.NET" 
+Features search, looks the same to all users logged in or not.
+*/
+
+#mal\_cs\_powered {
+    /* color: cyan !important; */ /* uncomment to enable */
+}
+
+#mal\_cs\_powered a {
+    /* color: yellow !important; */ /* uncomment to enable */
+}
+
+#mal\_cs\_powered #search {
+    /* color: brown !important; */ /* uncomment to enable */
+}
+
+#searchListButton {
+    /* color: violet !important; */ /* uncomment to enable */
+}
+
+/*MAL LOGO "MYANIMELIST"
+This is only seen by people NOT logged in. 
+Its on the left side.
+*/
+
+#mal\_control\_strip {
+    /* background: aquamarine !important; */ /* uncomment to enable */
+}
+
+td#mal\_cs\_pic a img {
+    /* background: silver !important; */ /* uncomment to enable */
+}
+
+/*Shishio-kun's code ends here */
+/* ------ */
+
+/* top bar background */
+#mal\_control\_strip {
+    background: #000000 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* animate top bar content */
+#mal\_cs\_pic,
+#mal\_cs\_listinfo,
+#mal\_cs\_links,
+#mal\_cs\_otherlinks {
+    /* hide top bar dividers */
+    border-right: 0 none !important;
+    
+    /* animation call */
+    animation-name: shake;
+    animation-delay: 1s;
+    animation-duration: 0.5s;
+    animation-iteration-count: 3;
+}
+
+#mal\_cs\_powered {    
+    /* hide search */
+    display: none;
+}
+
+/* copyright - keep this enabled! */
+#copyright {
+    color: #FFFFFF;
+    font-family: 'Bitter', serif;
+    font-size: 12px;
+	font-weight: 300;
+	padding-top: 60px;
+}
