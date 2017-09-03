@@ -182,8 +182,12 @@
 /*
 Tags Row Width
 */
+.td1:nth-of-type(2), .td2:nth-of-type(2){
+	width: var(--title-width);
+}
+
 .td1:nth-of-type(6), .td2:nth-of-type(6){
-	width: 400px;
+	width: var(--tag-width);
 }
 
 /* scores */
