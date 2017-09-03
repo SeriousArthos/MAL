@@ -6,6 +6,11 @@
 @import url(https://fonts.googleapis.com/css?family=Berkshire+Swash);
 @import url(https://fonts.googleapis.com/css?family=Merienda:700);
 
+:root {
+    --tag-width: 384px;
+    --title-width: 256px;	
+}
+
 /* links */
 [href] {
     color: #F9E0C7; /* black text */
