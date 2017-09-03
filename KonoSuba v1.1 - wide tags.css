@@ -161,11 +161,17 @@
 .animetitle {
 }
 
-/*
-Tags table Header width
-*/
+/* Custom "tag" column width and title */
 .table_header:nth-of-type(6) {
-	width: 400px;
+	width: var(--tag-width);
+	text-indent: -9999px;
+	line-height: 0; /* Collapse the original line */
+}
+.table_header:nth-of-type(6)::after {
+  content: "About"; /* new column title */
+  text-indent: 0;
+  display: block;
+  line-height: initial; /* New content takes up original line height */
 }
 
 /*
